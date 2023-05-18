@@ -1,6 +1,6 @@
 package com.leobarreto.desafiosenior.models;
 
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,132 +10,108 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.*;
 
-import com.leobarreto.desafiosenior.Enum.Measurement;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.leobarreto.desafiosenior.models.Enum.Measurement;
 
 @Entity
 @Table(name = Items.TABLE_NAME)
 public class Items {
-    public static final String TABLE_NAME = "items";
+    public static final String TABLE_NAME = "itens";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
 
-    @Column(name = "name",nullable = false)
+    @Column(name = "nome_item",nullable = false)
     @NotNull
     @NotEmpty
-    private String name;
+    private String nomeItem;
 
-    @Column(name = "unit_measure", nullable = false)
+    @Column(name = "unidade_medida", nullable = false)
     @NotNull
-    @NotEmpty
-    private Measurement unitOfMeasure;
+    private Measurement unidadeMedida;
 
-    @Column(name = "amount")
-    private Float amount;
+    @Column(name = "qt_item")
+    private Float qtItem;
 
-    @Column(name = "price", nullable = false)
+    @Column(name = "valor_item", nullable = false)
     @NotNull
-    @NotEmpty
-    private Float price;
+    private Float valorItem;
 
-    @Column(name = "perishable_item", nullable = false)
+    @Column(name = "perecivel")
+    private Boolean perecivel;
+
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @Column(name = "dt_validade")
+    private LocalDateTime dtValidade;
+
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @Column(name = "dt_fabricacao", nullable = false)
     @NotNull
-    @NotEmpty
-    private Boolean perishableItem;
-
-    @Column(name = "expiration_dt", nullable = false)
-    @NotNull
-    @NotEmpty
-    private LocalTime expirationDT;
-
-    @Column(name = "manufactor_dt", nullable = false)
-    @NotNull
-    @NotEmpty
-    private LocalTime manufactorDT;
-
-
-    public Items() {
-    }
-
-    public Items(Long id, String name, Measurement unitOfMeasure, Float amount, Float price, Boolean perishableItem, LocalTime expirationDT, LocalTime manufactorDT) {
-        this.id = id;
-        this.name = name;
-        this.unitOfMeasure = unitOfMeasure;
-        this.amount = amount;
-        this.price = price;
-        this.perishableItem = perishableItem;
-        this.expirationDT = expirationDT;
-        this.manufactorDT = manufactorDT;
-    }
+    private LocalDateTime dtFabricacao;
 
     public Long getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public String getName() {
-        return this.name;
+    public String getNomeItem() {
+        return nomeItem;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNomeItem(String nomeItem) {
+        this.nomeItem = nomeItem;
     }
 
-    public Measurement getUnitOfMeasure() {
-        return this.unitOfMeasure;
+    public Measurement getUnidadeMedida() {
+        return unidadeMedida;
     }
 
-    public void setUnitOfMeasure(Measurement unitOfMeasure) {
-        this.unitOfMeasure = unitOfMeasure;
+    public void setUnidadeMedida(Measurement unidadeMedida) {
+        this.unidadeMedida = unidadeMedida;
     }
 
-    public Float getAmount() {
-        return this.amount;
+    public Float getQtItem() {
+        return qtItem;
     }
 
-    public void setAmount(Float amount) {
-        this.amount = amount;
+    public void setQtItem(Float qtItem) {
+        this.qtItem = qtItem;
     }
 
-    public Float getPrice() {
-        return this.price;
+    public Float getValorItem() {
+        return valorItem;
     }
 
-    public void setPrice(Float price) {
-        this.price = price;
+    public void setValorItem(Float valorItem) {
+        this.valorItem = valorItem;
     }
 
-    public Boolean isPerishableItem() {
-        return this.perishableItem;
+    public Boolean getPerecivel() {
+        return perecivel;
     }
 
-    public Boolean getPerishableItem() {
-        return this.perishableItem;
+    public void setPerecivel(Boolean perecivel) {
+        this.perecivel = perecivel;
     }
 
-    public void setPerishableItem(Boolean perishableItem) {
-        this.perishableItem = perishableItem;
+    public LocalDateTime getDtValidade() {
+        return dtValidade;
     }
 
-    public LocalTime getExpirationDT() {
-        return this.expirationDT;
+    public void setDtValidade(LocalDateTime dtValidade) {
+        this.dtValidade = dtValidade;
     }
 
-    public void setExpirationDT(LocalTime expirationDT) {
-        this.expirationDT = expirationDT;
+    public LocalDateTime getDtFabricacao() {
+        return dtFabricacao;
     }
 
-    public LocalTime getManufactorDT() {
-        return this.manufactorDT;
+    public void setDtFabricacao(LocalDateTime dtFabricacao) {
+        this.dtFabricacao = dtFabricacao;
     }
-
-    public void setManufactorDT(LocalTime manufactorDT) {
-        this.manufactorDT = manufactorDT;
-    }
-
 }

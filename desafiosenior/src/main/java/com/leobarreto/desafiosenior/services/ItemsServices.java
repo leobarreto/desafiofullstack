@@ -1,5 +1,6 @@
 package com.leobarreto.desafiosenior.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,16 +8,22 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.leobarreto.desafiosenior.models.Items;
-import com.leobarreto.desafiosenior.repositories.ItemRepository;
+import com.leobarreto.desafiosenior.repositories.ItemsRepository;
 
 @Service
-public class ItemServices {
+public class ItemsServices {
     
     @Autowired
-    private ItemRepository itemRepository;
+    private ItemsRepository itemsRepository;
+
+    public List<Items> findAll() {
+        List<Items> item = this.itemsRepository.findAll();
+
+        return item;
+    }
 
     public Items findById(Long id) {
-        Optional<Items> item = this.itemRepository.findById(id);
+        Optional<Items> item = this.itemsRepository.findById(id);
 
         return item.orElseThrow(() -> new RuntimeException("Item" + Items.class.getName() + "não encontrado."));
     }
@@ -24,20 +31,23 @@ public class ItemServices {
     @Transactional
     public Items create(Items obj) {
         obj.setId(null);
-        obj = this.itemRepository.save(obj);
+        obj = this.itemsRepository.save(obj);
         return obj;
     }
 
     @Transactional
     public Items update(Items obj) {
-        Items newObj = findById(obj.getId());
+//        Items newObj = findById(obj.getId());
+//        newObj.setQtItem(obj.getQtItem());
+//        newObj.setDtFabricacao(obj.getDtFabricacao());
+//        newObj.setNomeItem(obj.getNomeItem());
 
-        return this.itemRepository.save(newObj);
+        return this.itemsRepository.save(obj);
     }
 
     @Transactional
     public void delete(Long id) {
-        findById(id);
-        this.itemRepository.deleteById(id);
+//        findById(id);
+        this.itemsRepository.deleteById(id);
     }
 }

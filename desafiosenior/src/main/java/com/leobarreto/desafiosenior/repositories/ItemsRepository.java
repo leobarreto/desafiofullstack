@@ -4,11 +4,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.leobarreto.desafiosenior.models.Items;
 import java.util.List;
+import java.util.Optional;
 
 
-public interface ItemRepository extends JpaRepository<Items, Long> {
+public interface ItemsRepository extends JpaRepository<Items, Long> {
     
     List<Items> findAll();
 
-    Items findAllById(Long id);
+    Optional<Items> findById(Long id);
 }
