@@ -56,6 +56,20 @@ public class Items {
     private LocalTime manufactorDT;
 
 
+    public Items() {
+    }
+
+    public Items(Long id, String name, Measurement unitOfMeasure, Float amount, Float price, Boolean perishableItem, LocalTime expirationDT, LocalTime manufactorDT) {
+        this.id = id;
+        this.name = name;
+        this.unitOfMeasure = unitOfMeasure;
+        this.amount = amount;
+        this.price = price;
+        this.perishableItem = perishableItem;
+        this.expirationDT = expirationDT;
+        this.manufactorDT = manufactorDT;
+    }
+
     public Long getId() {
         return this.id;
     }
