@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -19,4 +20,5 @@ export class FormComponent implements OnInit {
   create() {
     this.dataService.create(this.formData);
   }
+
 }

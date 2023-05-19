@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class EditComponent implements OnInit {
   formData: any = [];
   id: number = 0;
+  checked: number = -1;
 
   constructor(
     private dataService: DataService,
@@ -25,22 +26,10 @@ export class EditComponent implements OnInit {
   findById(id: any) {
     this.dataService.getDataById(this.id).subscribe(formData => {
       this.formData = formData;
-
-      if(this.formData.unidadeMedida == 'KG'){
-        this.formData.value = 0;
-        this.formData.desc = "Quilograma"
-      } else if (this.formData.unidadeMedida == 'LT'){
-        this.formData.value = 1;
-        this.formData.desc = "Litro(s)"
-      } else {
-        this.formData.value = 2;
-        this.formData.desc = "Unidade"
-      }
     });
   }
 
   update() {
-    // console.log(this.formData);
     this.dataService.update(this.formData);
   }
 

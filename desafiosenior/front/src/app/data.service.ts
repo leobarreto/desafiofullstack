@@ -20,16 +20,13 @@ export class DataService {
 
   create(data: any) {
     const headers = { 'content-type': 'application/json' };
-    const body = JSON.stringify(data);
 
     return this.http.post(`${this.url}/item/`, data, { headers });
   }
 
   update(data: any) {
-    const headers = { 'content-type': 'application/json' };
-    const body = JSON.stringify(data);
-    // console.log(data);
-    return this.http.put(`${this.url}/item/${data.id}`, data, { headers });
+
+    return this.http.put(`${this.url}/item/${data.id}`, data);
   }
 
 

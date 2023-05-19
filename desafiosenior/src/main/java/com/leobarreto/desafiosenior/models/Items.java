@@ -42,15 +42,6 @@ public class Items {
     @Column(name = "perecivel")
     private Boolean perecivel;
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    @Column(name = "dt_validade")
-    private LocalDateTime dtValidade;
-
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    @Column(name = "dt_fabricacao", nullable = false)
-    @NotNull
-    private LocalDateTime dtFabricacao;
-
     public Long getId() {
         return id;
     }
@@ -97,21 +88,5 @@ public class Items {
 
     public void setPerecivel(Boolean perecivel) {
         this.perecivel = perecivel;
-    }
-
-    public LocalDateTime getDtValidade() {
-        return dtValidade;
-    }
-
-    public void setDtValidade(LocalDateTime dtValidade) {
-        this.dtValidade = dtValidade;
-    }
-
-    public LocalDateTime getDtFabricacao() {
-        return dtFabricacao;
-    }
-
-    public void setDtFabricacao(LocalDateTime dtFabricacao) {
-        this.dtFabricacao = dtFabricacao;
     }
 }
