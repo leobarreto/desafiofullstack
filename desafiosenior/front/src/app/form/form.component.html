@@ -1,0 +1,47 @@
+<form (ngSubmit)="create()">
+    <div class="row mb-3">
+        <label for="nomeItem" class="col-sm-2 col-form-label">Nome: </label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="nomeItem" [(ngModel)]="formData.nomeItem" required>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="unidadeMedida" class="form-label">Unidade de Medida</label>
+        <div class="col-sm-10">
+            <select name="unidadeMedida" class="form-select form-select-sm" aria-label=".form-select-sm example"
+                [(ngModel)]="formData.unidadeMedida" required>
+                <option selected="">Selecione...</option>
+                <option value="1">Quilograma(s)</option>
+                <option value="2">Litro(s)</option>
+                <option value="3">Unidade(s)</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="qtItem" class="form-label">Quantidade</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="qtItem" [(ngModel)]="formData.qtItem">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="valorItem" class="form-label">Preço</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control vl_item" name="valorItem" [(ngModel)]="formData.valorItem" required>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <legend class="col-form-label col-sm-2 pt-0" for="perecivel">Perecível</legend>
+        <div class="col-sm-10">
+            <input class="form-check-input" type="checkbox" value="" name="perecivel" [(ngModel)]="formData.perecivel">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-sm-10">
+            <div class="form-check">
+                <label class="form-check-label" for="dtFabricacao">Data Fabricação: </label>
+                <input type="text" id="dt_fabricacao" name="dtFabricacao" [(ngModel)]="formData.dtFabricacao">
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+</form>

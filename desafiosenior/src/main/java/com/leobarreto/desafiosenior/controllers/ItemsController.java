@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -18,6 +19,7 @@ public class ItemsController {
     @Autowired
     private ItemsServices itemsServices;
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/")
     public ResponseEntity<List<Items>> findAll() {
         List<Items> obj = this.itemsServices.findAll();
@@ -25,6 +27,7 @@ public class ItemsController {
         return ResponseEntity.ok().body(obj);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/{id}")
     public ResponseEntity<Items> findById(@PathVariable Long id) {
         Items obj = this.itemsServices.findById(id);
@@ -32,6 +35,7 @@ public class ItemsController {
         return ResponseEntity.ok().body(obj);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping
     public ResponseEntity<Void> create(@RequestBody Items obj) {
         this.itemsServices.create(obj);
@@ -41,6 +45,7 @@ public class ItemsController {
         return ResponseEntity.created(uri).build();
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PutMapping("/{id}")
     public ResponseEntity<Void> update(@RequestBody Items obj, @PathVariable Long id) {
         obj.setId(id);
@@ -49,6 +54,7 @@ public class ItemsController {
         return ResponseEntity.noContent().build();
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         this.itemsServices.delete(id);
