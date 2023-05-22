@@ -1,6 +1,6 @@
 package com.leobarreto.desafiosenior.models;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -41,6 +41,15 @@ public class Items {
 
     @Column(name = "perecivel")
     private Boolean perecivel;
+
+    @JsonFormat(pattern="yyyy-MM-dd")
+    @Column(name = "dt_validade")
+    private LocalDate dtValidade;
+
+    @JsonFormat(pattern="yyyy-MM-dd")
+    @Column(name = "dt_fabricacao", nullable = false)
+    @NotNull
+    private LocalDate dtFabricacao;
 
     public Long getId() {
         return id;
@@ -88,5 +97,21 @@ public class Items {
 
     public void setPerecivel(Boolean perecivel) {
         this.perecivel = perecivel;
+    }
+
+    public LocalDate getDtValidade() {
+        return dtValidade;
+    }
+
+    public void setDtValidade(LocalDate dtValidade) {
+        this.dtValidade = dtValidade;
+    }
+
+    public LocalDate getDtFabricacao() {
+        return dtFabricacao;
+    }
+
+    public void setDtFabricacao(LocalDate dtFabricacao) {
+        this.dtFabricacao = dtFabricacao;
     }
 }

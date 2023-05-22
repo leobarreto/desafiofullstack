@@ -15,8 +15,8 @@
             <td>
                 <a [routerLink]="['/edit', item.id]"
                     class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">Editar</a>
-                <a [routerLink]="['/delete', item.id]"
-                    class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">Excluir</a>
+                <a [routerLink]="['.']" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+                    (click)="delete(item.id)">Excluir</a>
             </td>
         </tr>
     </tbody>

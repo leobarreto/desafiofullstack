@@ -1,1 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+.validation-error p {
+    color: #dc3545;
+    margin-left: 0.4em;
+    border-left: 3px solid #dc3545;
+    padding-left: 0.2em;
+}

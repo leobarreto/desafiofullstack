@@ -37,17 +37,12 @@ public class ItemsServices {
 
     @Transactional
     public Items update(Items obj) {
-//        Items newObj = findById(obj.getId());
-//        newObj.setQtItem(obj.getQtItem());
-//        newObj.setDtFabricacao(obj.getDtFabricacao());
-//        newObj.setNomeItem(obj.getNomeItem());
 
         return this.itemsRepository.save(obj);
     }
 
     @Transactional
     public void delete(Long id) {
-//        findById(id);
         this.itemsRepository.deleteById(id);
     }
 }
