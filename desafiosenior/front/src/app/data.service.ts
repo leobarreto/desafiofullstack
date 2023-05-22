@@ -24,6 +24,7 @@ export class DataService {
 
   create(data: any) {
     const headers = { 'content-type': 'application/json' };
+    const body = JSON.stringify(data);
 
     return this.http.post(`${this.baseApiUrl}item/`, body, { headers }).subscribe(() => {
       alert('Item cadastrado com sucesso');
@@ -43,7 +44,7 @@ export class DataService {
     const headers = { 'content-type': 'application/json' };
     const body = JSON.stringify(data);
 
-    return this.http.delete(`${this.baseApiUrl}item/${data}`, { headers }).subscribe(() => {
+    return this.http.delete(`${this.baseApiUrl}item/${body}`, { headers }).subscribe(() => {
       alert('Item excluído com sucesso');
     });
   }
